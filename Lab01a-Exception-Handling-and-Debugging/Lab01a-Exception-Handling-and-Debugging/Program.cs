@@ -19,7 +19,7 @@ namespace Lab01a_Exception_Handling_and_Debugging
             }
             finally
             {
-                Console.WriteLine("This program has completed.")
+                Console.WriteLine("Program is complete.");
             }
         }
 
@@ -27,6 +27,7 @@ namespace Lab01a_Exception_Handling_and_Debugging
         {
             try
             {
+                Console.WriteLine("Welcome to my game! Let\'s do some math!");
                 Console.WriteLine("Enter a number that is greater than zero:");
                 int input = Convert.ToInt32(Console.ReadLine());
                 int[] userArray = new int[input];
@@ -34,6 +35,20 @@ namespace Lab01a_Exception_Handling_and_Debugging
                 int userSum = GetSum(userArray);
                 int userProduct = GetProduct(userArray, userSum);
                 decimal userDecimal = GetQuotient(userProduct);
+
+                Console.WriteLine($"Your array is of size: {input}");
+                Console.Write("The numbers in your array are ");
+                for (int i = 0; i < input; i++)
+                {
+                    Console.Write($"{userArray[i]}");
+                    if (i != (input - 1))
+                    {
+                        Console.Write(", ");
+                    }
+                }
+                Console.WriteLine($"\nThe sum of the array is {userSum}");
+                Console.WriteLine($"{userSum} * {userProduct / userSum} = {userProduct}");
+                Console.WriteLine($"{userProduct} / {userProduct / userDecimal } = {userDecimal}");
             }
             catch (FormatException e)
             {
@@ -77,13 +92,29 @@ namespace Lab01a_Exception_Handling_and_Debugging
                 Console.WriteLine($"Select a number between 1 and {userArray.Length}:");
                 string answer = Console.ReadLine();
                 int product;
-                product = userArray[Convert.ToInt32(answer)] * userSum;
+                product = userArray[Convert.ToInt32(answer) - 1] * userSum;
                 return product;
             }
             catch (IndexOutOfRangeException e)
             {
-                Console.WriteLine($"{e.Message}");
+                Console.WriteLine(e.Message);
                 throw;
+            }
+        }
+
+        static decimal GetQuotient(int userProduct)
+        {
+            try
+            {
+                Console.WriteLine($"Enter a number by which to divide the product of {userProduct}:");
+                string answer = Console.ReadLine();
+                decimal num = decimal.Divide(Convert.ToDecimal(userProduct), Convert.ToDecimal(answer));
+                return num;
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine(e.Message);
+                return 0;
             }
         }
     }
