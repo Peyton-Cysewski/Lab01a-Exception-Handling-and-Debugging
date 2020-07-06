@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 
 namespace Lab01a_Exception_Handling_and_Debugging
 {
@@ -21,6 +22,26 @@ namespace Lab01a_Exception_Handling_and_Debugging
             }
         }
 
-
+        static void StartSequence()
+        {
+            try
+            {
+                Console.WriteLine('Enter a number that is greater than zero:');
+                int input = Convert.ToInt32(Console.ReadLine());
+                int[] userArray = new int[input];
+                userArray = Populate(userArray);
+                int userSum = GetSum(userArray);
+                int userProduct = GetProduct(userArray, userSum);
+                decimal userDecimal = GetQuotient(userProduct);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (OverflowException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
     }
 }
