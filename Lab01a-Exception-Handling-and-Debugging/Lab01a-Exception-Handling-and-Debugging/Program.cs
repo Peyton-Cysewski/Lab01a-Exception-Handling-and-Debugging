@@ -26,7 +26,7 @@ namespace Lab01a_Exception_Handling_and_Debugging
         {
             try
             {
-                Console.WriteLine('Enter a number that is greater than zero:');
+                Console.WriteLine("Enter a number that is greater than zero:");
                 int input = Convert.ToInt32(Console.ReadLine());
                 int[] userArray = new int[input];
                 userArray = Populate(userArray);
@@ -42,6 +42,16 @@ namespace Lab01a_Exception_Handling_and_Debugging
             {
                 Console.WriteLine(e.Message);
             }
+        }
+
+        static int[] Populate(int[] userArray)
+        {
+            for (int i = 0; i < userArray.Length; i++)
+            {
+                Console.WriteLine($"Please enter a number ({i + 1}/{userArray.Length}):");
+                userArray[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            return userArray;
         }
     }
 }
