@@ -27,7 +27,9 @@ namespace Lab01a_Exception_Handling_and_Debugging
         {
             try
             {
+                // Intro message
                 Console.WriteLine("Welcome to my game! Let\'s do some math!");
+                // Function calls and input gathering
                 Console.WriteLine("Enter a number that is greater than zero:");
                 int input = Convert.ToInt32(Console.ReadLine());
                 int[] userArray = new int[input];
@@ -35,7 +37,7 @@ namespace Lab01a_Exception_Handling_and_Debugging
                 int userSum = GetSum(userArray);
                 int userProduct = GetProduct(userArray, userSum);
                 decimal userDecimal = GetQuotient(userProduct);
-
+                // Summarizing all the computations of the functions
                 Console.WriteLine($"Your array is of size: {input}");
                 Console.Write("The numbers in your array are ");
                 for (int i = 0; i < input; i++)
@@ -62,6 +64,7 @@ namespace Lab01a_Exception_Handling_and_Debugging
 
         static int[] Populate(int[] userArray)
         {
+            // Takes an empty array of known length and has the user populate it with integer values
             for (int i = 0; i < userArray.Length; i++)
             {
                 Console.WriteLine($"Please enter a number ({i + 1}/{userArray.Length}):");
@@ -73,6 +76,7 @@ namespace Lab01a_Exception_Handling_and_Debugging
 
         static int GetSum(int[] userArray)
         {
+            // Takes an array of integers and returns the summation of all its values
             int sum = 0;
             foreach (int num in userArray)
             {
@@ -87,6 +91,7 @@ namespace Lab01a_Exception_Handling_and_Debugging
 
         static int GetProduct(int[] userArray, int userSum)
         {
+            // Has the user select a value that falls within the range of indices of the array, choose the value at said chosen index, and multiplies it with the sum of the array that is passed in
             try
             {
                 Console.WriteLine($"Select a number between 1 and {userArray.Length}:");
@@ -104,6 +109,7 @@ namespace Lab01a_Exception_Handling_and_Debugging
 
         static decimal GetQuotient(int userProduct)
         {
+            // Gets a number from the user to divide the product by; the product value is passed in
             try
             {
                 Console.WriteLine($"Enter a number by which to divide the product of {userProduct}:");

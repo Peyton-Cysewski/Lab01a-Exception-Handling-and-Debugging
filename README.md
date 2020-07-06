@@ -1,1 +1,7 @@
 # Lab01a-Exception-Handling-and-Debugging
+
+The goal of this programming assignment was to get familiar with using Exceptions in a program as well as to get more comfortable writing in C#. The program starts by asking the user for a number greater than zero. This number corresponds to the length of an array that will be filled in the following steps, gathering a number from the user each time. Once the array is filled, the program asks a user to select a number between 1 and the length of the array. This number is used to reference one of the numbers at that index of the array to be multiplied by the sum of the numbers in the same array. Lastly, the program prompts the user to choose a number by which to divide the product of the previous step. This does not need to fit evenly, as the decimal data numeric data type allows for granular precision in its calculation. The program concludes by listing all of the numbers and calculations used in the process.
+
+In each segment of the program, try-catch statments were used to catch specific exceptions like where the user could choose a zero as the divisor, enter an input that wasn't a number, or look at a range outside the size of the array that is used. These catch statements display the formal exception messages to the console if they are caught.
+
+Total time: ~4.5 hours
