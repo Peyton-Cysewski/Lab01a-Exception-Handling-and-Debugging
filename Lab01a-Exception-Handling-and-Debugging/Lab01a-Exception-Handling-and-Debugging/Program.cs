@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Dynamic;
+using System.Net;
 
 namespace Lab01a_Exception_Handling_and_Debugging
 {
@@ -49,9 +50,24 @@ namespace Lab01a_Exception_Handling_and_Debugging
             for (int i = 0; i < userArray.Length; i++)
             {
                 Console.WriteLine($"Please enter a number ({i + 1}/{userArray.Length}):");
-                userArray[i] = Convert.ToInt32(Console.ReadLine());
+                string answer = Console.ReadLine();
+                userArray[i] = Convert.ToInt32(answer);
             }
             return userArray;
+        }
+
+        static int GetSum(int[] userArray)
+        {
+            int sum = 0;
+            foreach (int num in userArray)
+            {
+                sum += num;
+            }
+            if (sum < 20)
+            {
+                throw new Exception($"Value of {sum} is too low.");
+            }
+            return sum;
         }
     }
 }
