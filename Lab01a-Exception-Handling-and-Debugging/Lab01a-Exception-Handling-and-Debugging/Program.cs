@@ -69,5 +69,22 @@ namespace Lab01a_Exception_Handling_and_Debugging
             }
             return sum;
         }
+
+        static int GetProduct(int[] userArray, int userSum)
+        {
+            try
+            {
+                Console.WriteLine($"Select a number between 1 and {userArray.Length}:");
+                string answer = Console.ReadLine();
+                int product;
+                product = userArray[Convert.ToInt32(answer)] * userSum;
+                return product;
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine($"{e.Message}");
+                throw;
+            }
+        }
     }
 }
